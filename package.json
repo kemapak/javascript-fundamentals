@@ -1,0 +1,20 @@
+{
+  "name": "point",
+  "version": "1.0.0",
+  "description": "Sample immutable JavaScript class.",
+  "main": "src/Point.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "JavaScript",
+    "Class",
+    "immutable",
+    "JEST"
+  ],
+  "author": "Kem Apak",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^26.1.0"
+  }
+}
