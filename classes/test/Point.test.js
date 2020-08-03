@@ -42,6 +42,8 @@ describe('Given a immutable Point class.', () => {
     test('We should not be able to change its properties, thus state.', () => {
         let aPoint = new Point(3,4);
         aPoint.x = 5;
+        aPoint.y = 10;
         expect(5).not.toEqual(aPoint.x);
+        expect(10).not.toEqual(aPoint.y);
     });
 });
