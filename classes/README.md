@@ -64,7 +64,7 @@ If you do not have setters and getters lets' say in our Point class; since JavaS
 For the point class setters, and getters are named as `get x() {...} and set x() {...}` so you can set the `x` and `y` like `point.x = 5;` is ok, internally it is updating the private field `#_x`.
 
 ```javascript
-Point {
+class Point {
 	
 	#_x = 0;
 	#_y = 0;
