@@ -1,13 +1,13 @@
 # Classes
 
-We can now create classes like in classical Object Oriented languages in JavaScript. 
+We can now create classes like in classical Object-Oriented languages in JavaScript. 
 
 Constructors initialize an instance class, all setting necessary fields and calling necessary methods. 
 
 ```javascript
 class Point {
 
-...
+// ...
 
 	constructor(valueX, valueY) {
 	
@@ -23,12 +23,12 @@ class Point {
 		this.#_y = valueY;
 	}
 
-...
+// ...
 
 }    
 ```
 
-By default all the properties are public but we have not private fields and methods, as well as static fields and methods. 
+By default, all the properties are public, but we have not private fields and methods, as well as static fields and methods. 
 
 Another important point is you do not need to mark your fields and methods with `this` keyword when defining. You will need it when referencing them.
 
@@ -37,7 +37,7 @@ class Point {
 	
 	#_x = 0;
 	
-	...
+	// ...
 	
 	get x() {
 		return this.#_x;
@@ -47,17 +47,17 @@ class Point {
 		this.#_x = value;
 	}
 	
-	...
+	// ...
 	
 	distance = function() {
 		return Math.sqrt((this.#_x * this.#_x) + (this.#_y * this.#_y));
 	}
 	
-	...
+	// ...
 }	
 ```
 
-Private fields and methods are pre-fixed with '#' and only accessible within the instance class or via getters and setters. Adding the prefix "_" to a private field or method will makes it clear and explicit. 
+Private fields and methods are pre-fixed with '#' and only accessible within the instance class or via getters and setters. Adding the prefix "_" to a private field or method will make it clear and explicit. 
 
 If you do not have setters and getters lets' say in our Point class; since JavaScript is a dynamically typed language you can accidentally try to set a property like `point.x = 5;` but it will not change the private field '#x' instead create another field. 
 
@@ -85,7 +85,7 @@ class Point {
 		this.#_y = value;
 	}
      
-    ...   
+    // ...   
 }    
 ```    
 
