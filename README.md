@@ -12,7 +12,7 @@ You can use any modern Browser or install [Node JS] (https://nodejs.org)
 
 ## Table of Contents
 0. [Introduction](00-introduction/README.md)
-1. [Literals, Identifiers, Expressions, Statements and Comments](01-literals-identifiers-expressions-statements-and-comments/README.md)
+1. [Literals, Identifiers, Expressions, Statements and Comments](01-identifiers-literals-expressions-statements-and-comments/README.md)
 2. Types
 3. Operators
 4. Conditionals
