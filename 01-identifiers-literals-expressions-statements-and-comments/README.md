@@ -120,7 +120,7 @@ There are two (actually three) types of comments in JavaScript.
 
 > Avoid checking in commented code into your repository, unless it is going to live for a short time.
 
-- A **Line Comment** is a single line comment. Try to put the line comments as the name indicates above a statement. Only use it end of a line if it is very short.
+- A **line comment** is a single line comment. Try to put the line comments as the name indicates above a statement. Only use it end of a line if it is very short.
 
 ```
 	// This is a line comment.
