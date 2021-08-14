@@ -1,6 +1,5 @@
 # Identifiers, Literals, Expressions, Statements and Comments
 
-
 JavaScript has similar concepts as other strongly typed and scripting languages.
 
 > Note: **Never omit semicolons** ";" end of a statement if you want to avoid unexpected behavior or errors. Only exception to this rule is end of curly braces "}".
@@ -11,7 +10,7 @@ JavaScript has similar concepts as other strongly typed and scripting languages.
 - Expression =>  phrases
 - Statement => sentences
 
-## Core Concepts
+## Core lexicon
 - A **literal** is a value. Could be primary type, or an object type.
 
 ```
@@ -111,6 +110,30 @@ let notDefined;
 		people[index].sayHello();
 	}
 ```
+
+## Reserved Words
+
+Reserved Words
+Like any language JavaScript reserves certain identifiers for use by the language itself.
+
+### Currently used reserved words.
+
+|          |          |         |            |        |        |       | 
+| :---:    | :---:    | :---:   | :---:      | :---:  | :---:  | :---: |
+| as       |	 const	    | export  | get	       | null   | 	target | void  |
+| async	   | continue | extends |	if         | of     |	this	   | while | 
+| await	   | debugger | false	  | import     | return |	throw  |	 with  | 
+| break    |	 default  | finally | in	         | set    | true   | yield |
+| case     | delete   | for     | instanceof | static	| try    |	 catch |
+| 	do       | from     | let	    | super     	 | typeof |	class  | else  |
+| 	function |	 new      |	switch  |	var        |        |        |       |	
+
+### For future use reserved words.
+
+|       |            |            |         |         |           |        |
+| :---: | :---:      | :---:      | :---:   | :---:   | :---:     | :---:  |
+| enum  | 	implements | 	interface	| package	| private	| protected	| public |
+
 
 ## Comments
 
