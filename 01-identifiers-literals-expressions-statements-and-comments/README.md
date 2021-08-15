@@ -165,14 +165,14 @@ There are two (actually three) types of comments in JavaScript.
 
 ```
 /**
- This is a person class.
- 
- @param {String} name. The name of the person.
- @throws Error "Not a human" exception.
- @returns nothing if the instance is not an alien!
- @example
- let kem = new Person('Kem');
- @see {@link https://jsdoc.app}
+ * This is a person class.
+ *
+ * @param {String} name. The name of the person.
+ * @throws Error "Not a human" exception.
+ * @returns nothing if the instance is not an alien!
+ * @example
+ * let kem = new Person('Kem');
+ * @see {@link https://jsdoc.app}
  */
  class Person {
  
