@@ -41,3 +41,6 @@ If you want to see any output when running programs in node make sure you add ``
 There were and are still a lot of misunderstandings and opinions about this language. Labeling JavaScript as not complete or a toy language not for software engineers. This comes from the lack of the really understanding the language, its capabilities, browser implementation differences, also lack of understanding what it is build to do. Not all languages can, should do everything. Every computer language has a domain, strengths and weaknesses. The technology is just a tool, unless it is used by a craftsman, the outcome will most of the time be disappointing.
 
 I hope you will enjoy learning JavaScript, and love the language as I do.
+
+---
+[Go back to ToC](../README.md)

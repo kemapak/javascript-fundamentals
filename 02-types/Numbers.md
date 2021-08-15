@@ -154,4 +154,7 @@ _For example_: `3000n / 997n` is equal to `3n`
 - Math.tanh()
 - Math.trunc()
 
+---
 [Go back to types](README.md)
+
+[Go back to ToC](../README.md)

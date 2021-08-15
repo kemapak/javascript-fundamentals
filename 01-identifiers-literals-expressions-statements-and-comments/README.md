@@ -187,3 +187,6 @@ There are two (actually three) types of comments in JavaScript.
 	 }
  }
 ```
+
+---
+[Go back to ToC](../README.md)

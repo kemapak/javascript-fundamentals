@@ -123,3 +123,6 @@ Error object represents errors. Raises when executing JavaScript.
 
 ### Functions and Classes
 Functions and Classes are special types of objects.
+
+---
+[Go back to ToC](../README.md)
