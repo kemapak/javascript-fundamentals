@@ -14,31 +14,7 @@ In JavaScript types are divided into 2 categories; primitive types and object ty
 Numbers, string and boolean are primitive types but unlike any other language they have wrapper objects that have methods and properties in other words even primitive types do have methods in JavaScript. Only null & undefined primitive types do not have any methods.
 
 ### Numbers
-There is only one number type that includes integers and floats.
-
-#### Properties
-- Number.EPSILON
-- Number.MAX_SAFE_INTEGER
-- Number.MAX_VALUE
-- Number.MIN_SAFE_INTEGER
-- Number.MIN_VALUE
-- Number.NEGATIVE_INFINITY
-- Number.NaN
-- Number.POSITIVE_INFINITY
-
-#### Methods
-- Number.isFinite()
-- Number.isInteger()
-- Number.isNaN()
-- Number.isSafeInteger()
-- Number.parseFloat()
-- Number.parseInt()
-- Number.prototype.toExponential()
-- Number.prototype.toFixed()
-- Number.prototype.toLocaleString()
-- Number.prototype.toPrecision()
-- Number.prototype.toString()
-- Number.prototype.valueOf()
+There is only one number type that includes integers and floats. To learn more please check [Numbers and Math Static Class](Numbers.md)
 
 ### String
 There is not character type in JavaScript only Strings. They are character arrays (collections).
