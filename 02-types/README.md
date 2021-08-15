@@ -4,60 +4,20 @@ In JavaScript types are divided into 2 categories; primitive types and object ty
 
 ## Primitive Types
 
-- Numbers 
-- Strings
-- Booleans
+- Number
+- String
+- Boolean
 - Undefined
 - Null
 - Symbol
 
 Numbers, string and boolean are primitive types but unlike any other language they have wrapper objects that have methods and properties in other words even primitive types do have methods in JavaScript. Only null & undefined primitive types do not have any methods.
 
-### Numbers
-There is only one number type that includes integers and floats. To learn more please check [Numbers and Math Static Class](Numbers.md)
+### Number
+There is only one number type that includes integers and floats. To learn more please check [Numbers and Math Static Class](Number.md)
 
 ### String
-There is not character type in JavaScript only Strings. They are character arrays (collections).
-
-### Properties
-- String.length
-
-### Methods
-- String.fromCharCode()
-- String.fromCodePoint()
-- String.raw()
-- String.prototype.charAt()
-- String.prototype.charCodeAt()
-- String.prototype.codePointAt()
-- String.prototype.concat()
-- String.prototype.endsWith()
-- String.prototype.includes()
-- String.prototype.indexOf()
-- String.prototype.lastIndexOf()
-- String.prototype.localeCompare()
-- String.prototype.match()
-- String.prototype.matchAll()
-- String.prototype.normalize()
-- String.prototype.padEnd()
-- String.prototype.padStart()
-- String.prototype.repeat()
-- String.prototype.replace()
-- String.prototype.replaceAll()
-- String.prototype.search()
-- String.prototype.slice()
-- String.prototype.split()
-- String.prototype.startsWith()
-- String.prototype.substring()
-- String.prototype.toLocaleLowerCase()
-- String.prototype.toLocaleUpperCase()
-- String.prototype.toLowerCase()
-- String.prototype.toString()
-- String.prototype.toUpperCase()
-- String.prototype.trim()
-- String.prototype.trimEnd()
-- String.prototype.trimStart()
-- String.prototype.valueOf()
-- String.prototype\[@@iterator]()
+There is not character type in JavaScript only Strings. They are character arrays (collections). To learn more please check [String](String.md)
 
 ### Boolean
 The only values boolean value can have are *true* or *false*.

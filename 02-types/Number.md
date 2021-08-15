@@ -1,6 +1,6 @@
 # Numbers & Math Static Class
 
-## Numbers
+## Number
 JavaScript represents numbers by 64-bit floating-point format. 
 
 > Note: JavaScript uses 32-bit integer for array indexing and bitwise operators.

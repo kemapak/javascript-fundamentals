@@ -14,7 +14,8 @@ You can use any modern Browser or install [Node JS] (https://nodejs.org)
 0. [Introduction](00-introduction/README.md)
 1. [Identifiers, Literals, Expressions, Statements and Comments](01-identifiers-literals-expressions-statements-and-comments/README.md)
 2. [Types](02-types/README.md)
-   1. [Numbers](02-types/Numbers.md)
+   1. [Number](02-types/Number.md)
+   2. [String](02-types/String.md)
 3. Operators
 4. Conditionals
 5. Loops

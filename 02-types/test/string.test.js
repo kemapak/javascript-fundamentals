@@ -8,14 +8,14 @@ describe('Given a string type ', () =>{
 		emojiStr = '🙂';  // '\uD83D\uDE42'
 	});
 
-	test('it\'s length should return number of 16-bit values.', () =>{
+	test('when string is initailized, it\'s length should return number of 16-bit values.', () =>{
 
 		expect(str.length).toEqual(12);
 		expect(unicodeStr.length).toEqual(2);
 		expect(emojiStr.length).toEqual(2);
 	});
 
-	test('literal should be defined by double quote \", single quote \', and back quote \` characters.', () => {
+	test('when literal defined by double quote \", single quote \', and back quote \` characters should be type of string.', () => {
 
 		let doubleQuoteString = "This is O`Maly or O'Maly, and it's ok to use";
 		let singleQuoteString = 'You can put html tags here <div id="123">This a div</div> or even O`Maly with a back quote';
