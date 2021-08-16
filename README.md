@@ -16,7 +16,8 @@ You can use any modern Browser or install [Node JS] (https://nodejs.org)
 2. [Types](02-types/README.md)
    1. [Number](02-types/Number.md)
    2. [String](02-types/String.md)
-3. Operators
+   3. [Symbol](02-types/Symbol.md)
+3. [Operators](03-operators/README.md)
 4. Conditionals
 5. Loops
 6. Functions 
