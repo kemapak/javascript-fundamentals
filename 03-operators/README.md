@@ -134,7 +134,7 @@ This refers to the object instance it is create.
 | `void`                | return void        | Right           | `return void();` |
 | `in`                  | check property existence | Left      | `'Joe' in team` |
 | `!`                   | Logical negate     | Right           | `!crazy`      |
-| `&&`, `||`            | Logical and, or    | Left            | `!crazy && fun` |  
+| `&&`, <code>&#124;&#124;</code>            | Logical and, or    | Left            | `!crazy && fun` |  
 | `<`, `<=`,`>`, `>=`         | Compare order      | Left            | `index <= max`  |
 | `==`, `!=`              | equal   | Left            | `a != b`        |
 | `===`, `!===`           | strict equal       | Left            | `'abc' === value` |
