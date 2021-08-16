@@ -8,7 +8,11 @@ Each section has a README file for more details about that specific topic of the
 
 Most code example has also has unit tests to help the student to understand the contract of the feature better as well as hope to make writing unit tests a habit.
 
-You can use any modern Browser or install [Node JS] (https://nodejs.org)
+You can use any modern Browser or install [Node JS](https://nodejs.org)
+
+We will be using:
+- [The JavaScript Definitive Guide, by David Flanagan, O"Reilly Press](https://www.oreilly.com/library/view/javascript-the-definitive/9781491952016/) Book learning the language.
+- [Mozilla Developer Network Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript) for API references.
 
 ## Table of Contents
 0. [Introduction](00-introduction/README.md)

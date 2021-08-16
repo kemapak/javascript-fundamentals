@@ -30,6 +30,16 @@ You can run a JavaScript file from node by
 
 If you want to see any output when running programs in node make sure you add ```console.log()```
 
+Let us run the example JavaScript file `hello.js`
+1. Open up your terminal, make sure you are in the same folder as `hello.js`
+2. type `node hello.js Kem`
+3. You will see
+```Hello
+   Hello Kem
+```
+
+You already run your fist Node JavaScript application.
+
 > Note: **REPL** stands for READ, EVAL, PRINT, LOOP is a computer environment similar to Shell (Unix/Linux) and command prompt. When Node is installed it comes with REPL.
 
 > Note: **NPM** stands for Node Package Manager. In our projects whatever functionality we need or dependency we have, we can add a Node Package to achieve this functionality. NPM also has the capability to build our project and run certain fundamentals scripts. For example, test, lint, start/stop server, watch, build, etc.
