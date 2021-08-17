@@ -22,8 +22,7 @@ We will be using:
    2. [String](02-types/String.md)
    3. [Symbol](02-types/Symbol.md)
 3. [Operators](03-operators/README.md)
-4. Conditionals
-5. Loops
+4. [Conditionals and Loops](04-conditionals-loops/README.md)
 6. Functions 
 7. Collections (Arrays, Maps, Sets)
 8. Objects
