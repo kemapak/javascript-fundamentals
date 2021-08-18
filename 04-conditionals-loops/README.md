@@ -76,7 +76,7 @@ Instead you can write the same code will a different approach. If the conditions
 
 The `switch` statement evaluates the expression and check each option in other words `case` values. Also we do have `default` case if none of the `case` match the expression. 
 
->> Note: Very important to escape each `case` with a `break` keyword. Otherwise, the JavaScript will check each `case`. We even use `break` in the `default` case.
+>> Note: Very important to escape each `case` with a `break` keyword. Otherwise, the JavaScript will check each `case`. We even use `break` in the `default` case. `break` will jump end of switch statement.
 
 _For example_:
 
@@ -95,6 +95,49 @@ _For example_:
 			break;
 	}
 ```
+
+## Loops
+Loops are iterators, repeaters to go over a collection or object.
+
+### while
+`while` loop checks the expression and repeats the statements inside itself. Make sure the expression is not always evaluates to true, otherwise you will have an infinite loop.
+
+```
+while (conditional expression) {
+	// do something while expression is true.
+}
+```
+
+### do/while
+`do/while` loop is very similar to the `while` loop with one major difference. It executes the statements first then checks the conditional expression. In other words this loop will execute at least once.
+
+```
+do {
+	// do something while expression is true.
+} while (conditional expression);
+```
+
+### for
+`for` loop is the most common and most used loop in JavaScript. It iterates through a collection in its' pure form. It consists of 4 sections.
+- Initialization
+- Conditional
+- Increment
+- Loop body/statements
+
+```
+	for (let index = 0, numberOfItems = collection.length; index < numberOfItems; index++) {
+		// do something while the index is smaller than numberOfItems.
+	}
+``` 
+
+> Note: Unless your collection is dynamic, make sure you initialize the index, and ceiling index inside the initialization section. Otherwise JavaScript will evaluate the `collection.length` each time it goes through the loop. Even small this will have a performance impact.
+
+> Note: Even though you can initialize the index, ceiling index outside the loop, you should always initialized inside the initialized section, unless you have a very good reason. The scope of the variables when used with left will be within the loop. Otherwise, the variables declared will be relative scope until the code block is executed. This might cause some hard to find errors.
+
+> Note: Even though `for` loop usually used to run through collections it is not always the case. On the other hand `while` and `do/while` loop is usually not used with indexes.
+
+> Note: Avoid as much as possible nested loops. This has an exponential performance impact. Once of my mentors told me "Remember each time you use a nested loop a puppy dies".
+
 
 ---
 [Go back to ToC](../README.md)
