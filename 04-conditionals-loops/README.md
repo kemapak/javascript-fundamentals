@@ -138,6 +138,48 @@ do {
 
 > Note: Avoid as much as possible nested loops. This has an exponential performance impact. Once of my mentors told me "Remember each time you use a nested loop a puppy dies".
 
+### for/of
+`for/of` loop is very similar to for loop but without an index. It iterates through arrays, strings, sets, and maps.
+
+```
+let message = 'Hello World!';
+for (let character of message) {
+   console.log(character);
+}   
+``` 
+
+> One advantage of `for/of` loop is it iterates through characters not bytes. Emoji characters are counted as single character. This is very different than `String.prototype.length`.
+
+### for/in
+`for/in` loop is very similar to `for/in` but you can iterate through any object properties.
+
+```
+for (let property in customObject) {
+ console.log(customeObject[property]);
+}
+
+let message = 'Hello World!';
+for (let characterIndex in message) {
+   console.log(characterIndex + ' - ' + message[characterIndex]);
+}
+```
+
+> `for/in` does not iterate through symbol properties. Also default properties are omitted. 
+
+### break and continue
+We saw `break` in the `switch` statement. Which jumps out of the code block, loop, etc. On the other hand `continue` only jump out of the current iteration to the next.
+
+```
+for (let index = 0; index < 5; index++) {
+	if (2 === index) {
+		continue; // Jumps to the next iteration, where index becomes 3.
+	}
+	
+	if (3 === index) {
+		break; // Jumps out of the loop.
+	}
+}
+```
 
 ---
 [Go back to ToC](../README.md)
