@@ -472,6 +472,25 @@ let longMessage = `This is a long multi line message...
     finally ends!`
 ```
 
+#### Pattern Matching (RegExp, Regular Expressions)
+`RegExp` is an object type. It is used for string manipulation. It has a complex set of patterns and a set of APIs that works within.
+
+A regular expression literal is defined within opening and closing `/` forward slash.
+
+_For example_:
+```
+let pattern = /JavaScript/;
+```
+
+It could be followed by one or more letters modifying the parameters.
+1. `i` case insensitive.
+2. `g` global.
+
+_For example_:
+```
+ let sosPattern = /sos/gi;
+```
+
 ---
 [Go back to types](README.md)
 
