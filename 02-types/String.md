@@ -77,8 +77,8 @@ You can use `\` the escape character at end of the line to write multiple lines.
 _For example_:
 ```
 let longText = 'abcdef \
-    			ghijkl \
-    			mnopqrst';
+    	ghijkl \
+    	mnopqrst';
 ```
 
 A better way is to use <code>`</code> (back quote) character for multiple lines
