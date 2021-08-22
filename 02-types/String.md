@@ -83,7 +83,7 @@ let longText = 'abcdef \
 
 A better way is to use <code>`</code> (back quote) character for multiple lines
 
-`For example`:
+_For example_:
 ```
 let longText = `abcdef
                 ghijklm
