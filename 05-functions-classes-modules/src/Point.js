@@ -1,25 +1,25 @@
 class Point {
 
-    #_x = 0;
-    #_y = 0;
+    #x = 0;
+    #y = 0;
 
     get x() {
-        return this.#_x;
+        return this.#x;
     }
 
     get y() {
-        return this.#_y;
+        return this.#y;
     }
 
     /*
      * We made the Point instance immutable by disabling setters.
      */
     // set x(value) {
-    //     this.#_x = value;
+    //     this.#x = value;
     // }
 
     // set y(value) {
-    //     this.#_y = value;
+    //     this.#y = value;
     // }
 
     constructor(valueX, valueY) {
@@ -32,12 +32,12 @@ class Point {
             throw new Error(Point.messageBundle.secondParameterNotANumber);
         }
 
-        this.#_x = valueX;
-        this.#_y = valueY;
+        this.#x = valueX;
+        this.#y = valueY;
     }
 
     distance() {
-        return Math.sqrt((this.#_x * this.#_x) + (this.#_y * this.#_y));
+        return Math.sqrt((this.#x * this.#x) + (this.#y * this.#y));
     }
 
     static messageBundle = {
