@@ -23,9 +23,7 @@ We will be using:
    3. [Symbol](02-types/Symbol.md)
 3. [Operators](03-operators/README.md)
 4. [Conditionals and Loops](04-conditionals-loops/README.md)
-6. Functions 
+6. [Functions, Classes and Modules](05-functions-classes-modules/README.md)
 7. Collections (Arrays, Maps, Sets)
 8. Objects
 9. Regular Expressions and String Manipulation
-10. [Classes](classes/README.md)
-11. Modules

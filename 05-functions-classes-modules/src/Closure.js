@@ -12,8 +12,8 @@ let f = function uniqueInteger() {
 	return increament;
 }();
 
-console.log(f());
-console.log(f());
-console.log(f());
+console.log(f()); // 1
+console.log(f()); // 2
+console.log(f()); // 3
 
 

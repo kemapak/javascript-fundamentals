@@ -327,7 +327,7 @@ class person {
 }
 ```
 
-For the [point class](src/Point.js) setters, and getters are named as get x() {...} and set x() {...} so you can set the x and y like point.x = 5; is ok, internally it is updating the private field #x.
+For the [point class](./src/Point.js) setters, and getters are named as get x() {...} and set x() {...} so you can set the x and y like point.x = 5; is ok, internally it is updating the private field #x.
 
 You can access x and y like accessing a public field. You cannot access a private method. Keep in mind private methods are not easy to test.
 
