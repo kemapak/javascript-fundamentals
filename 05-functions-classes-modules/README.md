@@ -256,14 +256,35 @@ We can easily destruct and array or an object parameter passing to a function. T
 
 _For example_:
 ```
-function combineAssets({nameOne, valueOne, quantityOne}, {nameTwo, valueTwo, quantityTwo}, newName, newValue) {
-	let newAsset = {};
-	newAsset.name = newName;
-	newAsset.value = newValue;
-	newAsset.quantity = quantityOne + quantityTwo;
-	newAsset.OldNames = [nameOne, nameTwo];
+// By passing objects with out destructuring.
+function combineWarehouseAssets(objectOne, objectTwo, newName, new Price) {
+
+    combinedAsset = {
+        name: newName,
+        price: newPrice,
+        quantity: objectOne.quantity + objectTwo.quantity,
+        oldNames: [objectOne.name, objectTwo.name]
+    };
+    
+    return combinedAsset;
+}
+
+// Invoking function.
+let newAsset = combineWarehouseAssets({name: 'roundTable', price: 20, quantity: 12},
+                       {name: 'squareTable', price: 21, quantity: 17}, 
+                       'table', 21);
+
+
+// By passing parameterized object with destructuring.
+function combineWarehouseAssets({nameOne, priceOne, quantityOne}, {nameTwo, priceTwo, quantityTwo}, newName, newPrice) {
+	let combinedAsset = {
+	    name: newName,
+	    price: newPrice,
+	    quantity: quantityOne + quantityTwo,
+	    OldNames = [nameOne, nameTwo]
+	};
 	
-	return newAsset;
+	return combinedAsset;
 }
 
 let newAsset = combineAssets({nameOne: 'a', valueOne: 1, quantityOne:5},
@@ -309,7 +330,7 @@ If you do not have setters and getters lets' say in our Point class; since JavaS
 
 _For example_:
 ```
-class person {
+class Person {
 	#name;
 	get name() { 
 	  return this.#name;
@@ -335,8 +356,8 @@ _For example_:
 ```
 let aPoint = new Point(3,4);
 
-aPoint.x = 5;
-aPoint.y = 9;
+let x = aPoint.x; // Using the getter method.
+let y = aPoint.y; // Using the getter method.
 ```
 
 Static methods and fields are marked by the keyword `static'
