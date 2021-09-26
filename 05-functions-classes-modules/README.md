@@ -2,7 +2,7 @@
 
 Functions are the reusable blocks of code in JavaScript as well as many other languages. They are similar to constructs, procedures. They can accept parameters that act like local variables to functions. 
 
-Since JavaScript is a prototype based language (More on prototypes) functions acted as both classes, methods and functions. This is a bit confusing but today JavaScript has native classes, and has very similar structure to current object oriented languages.
+Since JavaScript is a prototype based language (More on prototypes) functions acted as both classes, methods and functions. This is a bit confusing but today JavaScript has native classes, and has very similar structure to current object-oriented languages.
 
 
 ## Defining Functions
@@ -16,12 +16,12 @@ function add(numberOneParam, numberTwoParam) {
 ```
 
 ### Function Declarations
-We can declare a function by the `function` keyword then the function name followed by parenthesis `()`, include 0 or more number of parameters followed by curly braces `{}` where the code block resides. 
+We can declare a function by the `function` keyword then the function name followed by parenthesis `()`, include 0 or more parameters followed by curly braces `{}` where the code block resides. 
 
-> Note: The curly braces are optional for single line function statements, but I highly recommended to avoid this style of coding that could cause unexpected issues.
+> Note: The curly braces are optional for single line function statements, but I highly recommend avoiding this style of coding that could cause unexpected issues.
 
 _For example_:
-The first example can be written as follow, but you should never do this, even it is syntactically legal.
+The first example can be written as follows, but you should never do this, even it is syntactically legal.
 ```
 // Anti-pattern do not code like this.
 function add (numberOneParam, numberTwoParam) return numberOneParam + numberTwoParam;
@@ -39,7 +39,7 @@ const add = function(numberOneParam, numberTwoParam) {
 }
 ```
 
-- Second, if a function is part of a class or object, it is called a method and we can define it as below.
+- Second, if a function is part of a class or object, it is called a method, and we can define it as below.
 
 _For example_: 
 ```
@@ -120,7 +120,7 @@ items.sort(function(firstObject, secondObject) {
 });
 ```
 
-- Fifth type of defining a function is new to JavaScript and it is called **Arrow Functions**. It is usually used for Lambda functions or functions with small code blocks. 
+- Fifth type of defining a function is new to JavaScript, and it is called **Arrow Functions**. It is usually used for Lambda functions or functions with small code blocks. 
 
 _For example_:
 ```
@@ -149,7 +149,7 @@ Functions are objects and since we used to use them to create classes there is a
 
 ## This keyword
 
-In old days we used functions and objects are classes. In that context `this` keyword indicated the reference where the function was invoked. In todays JavaScript this does refer to the class where the method is declared. I would highly recommend using this keyword with classes only to avoid any unexpected issues coming from historical language behaviors.
+In old days we used functions and objects are classes. In that context `this` keyword indicated the reference where the function was invoked. In today's JavaScript this does refer to the class where the method is declared. I would highly recommend using this keyword with classes only to avoid any unexpected issues coming from historical language behaviors.
 
 ## Inner Functions
 
@@ -171,7 +171,7 @@ function outer() {
 > Note: Arrow functions are the exception here, they can refer to `this` which means the class, object, function or context where they are invoked.
 
 ## Function Declaration vs Function Expression
-We might ask what is the difference between declaring a function and a function expression. They are very similar and achieve the results. If you declare your function it will be hoisted to the top. In other words, JavaScript engine will treat declared functions to be alway defined. So you can refer them even before we declared. On the other hand JavaScript expression are defined when the JavaScript engine renders them. So if refer to them before they are defined you will get an exception. 
+We might ask what is the difference between declaring a function and a function expression. They are very similar and achieve the results. If you declare your function it will be hoisted to the top. In other words, JavaScript engine will treat declared functions to be always defined. So you can refer them even before we declared. On the other hand JavaScript expression are defined when the JavaScript engine renders them. So if refer to them before they are defined you will get an exception. 
 
 Second is the `this` keyword, function expression always treat `this` keyword in the context they are defined. Function declaration either refer to global object (`windows` in browsers and `global` in node), or where the function is invoked or binded.
 
@@ -316,7 +316,7 @@ We can now create classes like in classical Object-Oriented languages in JavaScr
 
 In modern JavaScript we can define classes with `class`. I personally do not recommend using functions or objects to define classes like old day.
 
-A class can be create by a `class` keyword, a name, optional constructor, public or private fields and methods.
+A class can be created by a `class` keyword, a name, optional constructor, public or private fields and methods.
 
 Constructors initialize an instance class, all setting necessary fields and calling necessary methods.
 
@@ -348,7 +348,7 @@ class Person {
 }
 ```
 
-For the [point class](./src/Point.js) setters, and getters are named as get x() {...} and set x() {...} so you can set the x and y like point.x = 5; is ok, internally it is updating the private field #x.
+For the [point class](src/Point.js) setters, and getters are named as get x() {...} and set x() {...} so you can set the x and y like point.x = 5; is ok, internally it is updating the private field #x.
 
 You can access x and y like accessing a public field. You cannot access a private method. Keep in mind private methods are not easy to test.
 
