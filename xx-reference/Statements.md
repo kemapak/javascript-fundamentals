@@ -3,7 +3,7 @@
 > Reference from: David Flanagan. "JavaScript: The Definitive Guide, 7th Edition."
 
 | Statement	| Purpose |
-| :--       | :-- |
+| :---       | :--- |
 | break     | Exit from the innermost loop or switch or from named enclosing statement |
 | case      | Label a statement within a switch |
 | class     | Declare a class |
