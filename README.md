@@ -24,6 +24,6 @@ We will be using:
 3. [Operators](03-operators/README.md)
 4. [Conditionals and Loops](04-conditionals-loops/README.md)
 6. [Functions, Classes and Modules](05-functions-classes-modules/README.md)
-7. Collections (Arrays, Maps, Sets)
+7. [Collections - Arrays, Maps, Sets](06-Collections-Arrays-Maps-Sets/README.md)
 8. Objects
 9. Regular Expressions and String Manipulation
