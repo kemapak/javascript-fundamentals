@@ -1,6 +1,6 @@
 # Arrays
 
-Array are collection of values, which are called `element``. They can be of any type, primary or object and be mixed. The position of the element in the collection is called 'index` and they are zero (0) based in JavaScript; in other words the first element's index is 0. The indexes of JavaScript are whole numbers (zero and positive integers)
+Array are collection of values, which are called `element`. They can be of any type, primary or object and be mixed. The position of the element in the collection is called 'index` and they are zero (0) based in JavaScript; in other words the first element's index is 0. The indexes of JavaScript are whole numbers (zero and positive integers)
 
 In JavaScript arrays can be dynamic, they can grow or shrink. 
 
@@ -145,10 +145,51 @@ _For example_:
 let collection = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 // Returns ['Odd', 'Even', 'Odd', 'Even', 'Odd', 'Even', 'Odd', 'Even', 'Odd', 'Even'].
-let evenOddCollection = Array.from(collection, (x) => {x = (0 === x % 2) ? 'Even' : 'Odd'; return x;});
-
+let evenOddCollection = Array.from(collection, (x) => {let numberType = (0 === x % 2) ? 'Even' : 'Odd'; return numberType;});
 ```
 
+## Setting and Reading Array Elements
+We can easily assign values, and read the values from array elements.
+
+_For example_:
+```
+let collection = new Array();
+
+// Set the value of the first element to 1.
+collection[0] = 1; 
+
+// 6, read the value and add 5.
+let value = collection[0] + 5;
+
+// Loop through the collection and print the values.
+for (let index = 0, collectionSize = collection.length; index < collectionSize; index++) {
+	console.log(collection[index]);
+}
+```
+
+> Note: If an array element is not set, when we try to read it we will get `undefined` value.
+
+_For example_:
+```
+let collection = [1, 2, 3, ,5];
+
+// Undefined we do not have 11 elements, 10 indexed element does not exists.
+console.log(collection[10];
+
+// Undefined, even the element is created but not initialized.
+console.log(collection[3]);
+```
+
+> Note: Arrays are objects, so if you provide a string value, or not a whole number, it will add it as a property to the object.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// This will add the property `name` to the collection not another element!
+collection['name'] = 11;
+```
 
 ---
 [Go back to ToC](../README.md)
