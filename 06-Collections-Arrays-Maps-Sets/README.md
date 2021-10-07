@@ -4,10 +4,10 @@ Array are collection of values, which are called `element`. They can be of any t
 
 In JavaScript arrays can be dynamic, they can grow or shrink. 
 
-> Note: String are character arrays and the array methods, properties does apply to Strings.
+> Note: Strings are character arrays and the array methods, properties does apply to Strings.
 
 ## length
-JavaScript arrays size can be determined by the `length` property.
+JavaScript arrays size can be determined by the `length` property. Since JavaScript arrays are start from 0 (zero) the length is the largest index + 1.
 
 > Note: Remember in JavaScript array length is not a function but a property of the Array prototype.
 
@@ -18,6 +18,22 @@ let collection = [1, 2, 3];
 let size = collection.length; // 3
 // JavaScript indexes start from 0.
 let firstElement = collection[0]; // 1
+```
+
+> Note: If you set the length property of an array it will enlarge the array if it is larger than the current index, if it is smaller than the current index it will delete elements.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 4, 5];
+console.log(collection.length); // 5
+
+collection.length = 100; // Enlarge the array.
+console.log(collection.length); // 100
+
+collection.length = 2; // Delete 98 elements, [1, 2]
+
+collection.length = 0; // Delete all the elements.
 ```
 
 ## Methods
@@ -115,6 +131,7 @@ _For example_:
 ```
 let emptyCollection = Array.of(); // [];
 let collection = Array.of('Hello World!'); // ['Hello World!']
+let smallCollection = Array.of(1, 2, 3); // [1, 2, 3]
 ```
 
 `Array.of()` factory method can even overcome creating a single value collections, the array constructor can not.
@@ -190,6 +207,54 @@ let collection = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 // This will add the property `name` to the collection not another element!
 collection['name'] = 11;
 ```
+
+## Sparse Arrays
+
+If array length property is larger then the elements inside an array, we called it sparse array. We can check if an index has an element with the `in` operator. If an index does not have a value set, it will be `undefined`;
+
+_For example_:
+
+```
+let collectionOne = [1, 2, , , 5];
+let is3rdElementExist = 2 in collectionOne; // false
+let is1stElementExist = 0 in collectionOne; // true
+
+let collectionTwo = new Array(100); 
+console.log(collectionTwo[2]); // undefined
+
+let collectionThree = [];
+colloctionThree[99] = 'The 100th index is the only element';
+```
+
+## Queues
+
+If we want to use an array as a queue, we can utilize the methods below. Lets assume we have array `let a = [1, 2, 3];`
+
+| Method    | Description | Example |
+| :---:     | :---        | :---    |
+| `push`    | Adds an element to the end of an array, same as `a[a.length] = value`. | `a.push(4);` |
+| `pop`     | Removes the last element from an array. | `a.pop()` |
+| `unshift` | Adds an element to the beginning of an array. | `a.unshift('k');` |
+| `shift`   | Removes the first element of an array and returns the value. | `a.shift(); // Returns 'k'.` |
+
+## Adding and Deleting Array Elements
+
+In the previous examples we saw that we can set an array element value `collection[2] = 357;`, which adds it. Also we saw that setting the length property can delete the elements `collection.length = 0;`.
+
+We can delete an element from an array with the `delete` operator. Please note, this does not remove the index, just deletes the value of that indexed element.
+
+_For example_:
+
+```
+let collection = [1, 2, 3];
+delete collection[1]; // [1, ,3]
+console.log(collection.length); // It is still 3.
+```
+
+We will talk about one more method which add, deletes and replaces array element later. Which is called `splice`
+
+## Array Iteration
+
 
 ---
 [Go back to ToC](../README.md)
