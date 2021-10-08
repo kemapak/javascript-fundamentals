@@ -39,8 +39,6 @@ collection.length = 0; // Delete all the elements.
 ## Methods
 Arrays have quite a bit number of methods, which we can use, and will use to handle both Node and UI layer code.
 
-// TODO Add link to array methods.
-
 ## Creating and Instantiating Arrays
 We can create and instantiate arrays in several ways.
 
@@ -123,7 +121,7 @@ _For example_:
 let collection = new Array(4); // Creates an array of size 4.
 ```
 
-### Array Factory Methods `Array.of()` and `Array.from()`
+### Array Factory Static Methods `Array.of()` and `Array.from()`
 Array factory methods are extremely useful when we want to convert a literal (prime or object) to an arrays, or copying/cloning an array. These methods are also very useful when working with `Sets` and `Maps` which we will discuss shortly.
 
 _For example_:
@@ -163,6 +161,17 @@ let collection = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 // Returns ['Odd', 'Even', 'Odd', 'Even', 'Odd', 'Even', 'Odd', 'Even', 'Odd', 'Even'].
 let evenOddCollection = Array.from(collection, (x) => {let numberType = (0 === x % 2) ? 'Even' : 'Odd'; return numberType;});
+```
+## Array Static Method `isArray`
+We can check if a value type is array.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 4, 5];
+
+console.log(Array.isArray(collection)); // true;
+console.log(Array.isArray({})); // false
 ```
 
 ## Multi Dimensional Arrays
@@ -399,7 +408,9 @@ let dense = sparse.filter(() => true); // [1, 2, 3]
 
 ### `find` and `findIndex` Array Methods
 
-The `find` method, stops after the its function parameter find a matching element value. It will return the element value if true, otherwise it will return undefined.
+The `find` method, stops after the its function parameter find a matching element value. It will return the element value if true, otherwise it will return undefined. 
+
+This method only check values, not references. Therefore if 2 elements that are object types with different references if same will result in a successful search result.
 
 The `findIndex` method is very similar to the `find` method but it returns the index if there is match, otherwise it will return `-1` .
 
@@ -489,6 +500,347 @@ result = collection.concat(6, 7); // [1, 2, 3, 4, 5, 6, 7]
 ```
 
 > Note: `concat` method is very expensive. Use spread operator or other methods to add an array.
+
+## Subarrays
+
+### `slice` Array Method
+
+This method return a subarray of the collection, without changing the original array. It has 2 parameters the start (including) and end (excluding) of the slice. If second parameter is not provided it contains all the elements from the start position to the end. Negative parameters indicate the operation from the end of the array, -1 means the last element.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 4, 5];
+let result;
+
+result = collection.slice(0, 2); // [1, 2]
+result = collection.slice(2); // [3, 4, 5]
+result = collection.slice(0, -1) // [1, 2, 3, 4]
+result = collection.slice(-3, -1) // [3, 4]
+```
+
+### `splice` Array Method
+
+This method adds and removes elements from an array. **This method modifies the original array.** The first argument is the start (including), the second parameter is the number (length) of elements that will be deleted. If it is not provided all the element from start to the end of the array will be deleted.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 4, 5];
+
+collection.splice(2, 0); // Length is 0, deletes no elements.
+console.log(collection); // [1, 2, 3, 4, 5]
+
+collection.splice(2, 2); // deletes [3, 4]
+console.log(collection); // [1, 2, 5]
+
+collection.splice(1); // deletes [2, 5]
+console.log(collection); // [1];
+```
+
+After the 2 parameter any number of arguments will be added to the array from the start position specified by the first argument.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 4, 5];
+
+collection.splice(2, 2, 9, 9, 9); // deletes [3, 4] and adds [9, 9, 9]
+console.log(collection); // [1, 2, 9, 9, 9, 5]
+```
+
+### `fill` Array Method
+
+This method just like the name indicated fills, initializes and array. First parameter is the value. Second optional parameter is the start position (including). The third optional parameter is the end position (excluding). If only the first parameter is provided the array fills the entire array with the first parameter's value. This method modifies the original array.
+
+_For example_:
+```
+let collection = new Array(5);
+
+collection.fill('-');
+console.log(collection); // ['-', '-', '-', '-', '-']
+
+collection.fill(9, 1, 3);
+console.log(collection); // ['-', '9', '9`, '-', '-']
+```
+
+## Array Searching and Sorting
+
+### `indexOf` and `lastIndexOf` Array methods
+
+These methods search for element inside an array. If the element is found it returns the index, otherwise it returns `-1`. `indexOf` method searches the array from the beginning and the `lastIndexOf` method like the names indicates searches the arrays from the end. The both methods use `===` strict equal method to search for elements. So unless 2 element which are objects even identical if they have different references the methods will return `-1`.
+
+The second parameter is optional and denotes the search start index.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 3, 5];
+let resultIndex;
+
+resultIndex = collection.indexOf(3); // 2
+resultIndex = collection.indexOf(6); // -1
+resultIndex = collection.indexOf(3, 3); // 3
+```
+
+If we want to just compare the values, we need to use the `find` or `findIndex` methods explained earlier in this section.
+
+### `includes` Array Method
+
+This method check if an element is part of an array. It returns true or false.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 3, 5];
+let result;
+
+result = collection.includes(5); // true
+```
+
+
+### `sort` Array Method
+
+As the name indicates this method sorts array elements. It does change the original array. By default it first converts and then sorts the elements alphabetically. 
+
+For elements that are objects we need to pass **comparator** method (check design patterns).
+- If the first element is larger then then second return 1
+- If the first element is smaller then then second return -1
+- If the first element is equal to the second element return 0
+
+_For example_:
+
+```
+let collection = [1, 5, 3, 2, 4];
+collection.sort(); // [1, 2, 3, 4, 5]
+
+let itDepartmentStuff = ... // Assume collection of personel.
+
+itDepartmentStuff.sort( (firstPerson, secondPerson) => {
+	if (firstPerson.level > secondPerson.level) {
+		return 1;
+	}
+	
+	if (firstPerson.level < secondPerson.level) {
+		return -1;
+	}
+	
+	// They are equal.
+	return 0;
+});
+```
+
+### `reverse` Array Method
+
+This method reverses an array, changes the original array.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 3, 5];
+
+collection.reverse(); // [5, 4, 3, 2, 1]
+```
+
+## Array to String Conversion
+
+### `join` Array Method
+
+We can easily convert an array to a String using the `join` method. This method is the opposite of String.split(parameter) method. Just like the `split` method we can provide a character as parameter.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 3, 5];
+let text;
+
+text = collection.join(); // '1,2,3'
+text = collection.join(''); // '123'
+text = collection.join('-'); // '1-2-3'
+```
+
+### `toString` Array Method
+
+This method is same as the `join` method but does not take parameters.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 3, 5];
+let text;
+
+text = collection.toString(); // '1,2,3'
+```
+
+# Sets
+
+Sets are collections, there are several major difference with array. Every element in a set is unique. It is not ordered (no indexes). Just like array element can be any type.
+
+## Creation
+
+We can create/instantiate a set by the `new` operator.
+
+_For example_:
+
+```
+let exampleSet = new Set();
+let memberSet = new Set({name: Joe}, {name: Jane});
+```
+
+## `size`
+We can get the length of the set by the `size` property.
+
+_For example_:
+
+```
+let exampleSet = new Set();
+exampleSet.size; // 0
+
+let memberSet = new Set({name: Joe}, {name: Jane});
+memberSet.size(); // 2
+```
+
+## Adding, Removing Elements
+
+We can use the `add` to add elements to a set. Please note if the element exits it will be ignored, since duplicates are not allowed in sets. If we want to remove an element from our set we can use `delete` method. If `delete` cannot find element to remove it will return false, otherwise if it find the element, it will delete and then will return true. Both these method takes a single parameter.
+
+## Clearing All Elements
+
+We can use the `clear` method to remove all the elements from a set.
+
+_For example_:
+
+```
+let memberSet = new Set({name: Joe}, {name: Jane});
+memberSet.size(); // 2
+
+memberSet.clear();
+memberSet.size(); // 0
+```
+
+## Verifying Membership
+
+We can check if variable, value is a member of a set by using `has` method. If it finds the element returns true, otherwise returns false. Set uses strict equal `===` operator to check if an element exists. Therefore checking object will return false unless both objects has same references.
+
+_For example_:
+
+```
+let memberSet = new Set({name: Joe}, {name: Jane}, 2, 4);
+
+memberSet.has(2); // true
+memberSet.has(5); // false
+memberSet.has({name: Joe}); // false, this is object has different reference then the one in our set, so `===` will return false.
+```
+
+## Iteration
+
+We can use the `for/of` loops or `forEach` methods same as arrays.
+
+## Array Conversion
+
+We can convert our sets to arrays by using the spread operator `...` or `Array.from` method.
+
+# Maps
+Maps are objects with key and value pairs. In other words they are hash maps. They are extremely fast for looking up values, and are used accordingly not only in JavaScript but many programming languages. Most of the Map and Set methods are the same.
+
+## Creation
+
+We can create/instantiate a map by the `new` operator. We can pass key value pairs, we can pass another map, we can pass object entries.
+
+_For example_:
+
+```
+let exampleMap = new Map();
+exampleMap = new Map(['key01', 1], ['key02, 'sun']);
+
+let copyMap = new Map(exampleMap);
+
+let sampleObject = {key01:, 1, key02: 'sun'};
+
+let objectMap = new Map(Object.entries(sampleObject)); // ['key01', 1], ['key02, 'sun']
+
+```
+
+## `size`
+We can get the length of the map by the `size` property.
+
+_For example_:
+
+```
+let exampleMap = new Map();
+exampleSet.size; // 0
+
+let memberMap = new Map(['x', 1], ['y', 2]);
+memberMap.size(); // 2
+```
+
+## Adding, Fetching and Removing Elements
+
+We can use the `set` to add elements to a set. Please note if the element key exits its value will be updated. If want to fetch a value we can use `get` passing the key. If we want to remove an element from our set we can use `delete` method. If `delete` cannot find element to remove it will return false, otherwise if it find the element, it will delete and then will return true. These method takes a single parameter.
+
+_For example_:
+
+```
+let exampleMap = new Map();
+exampleMap.set('key01', 1);
+exampleMap.size; // 1
+
+exampleMap.get('key01'); // 1
+exampleMap.get('key221'); // undefined
+
+exampleMap.delete('key01'); // true
+
+exampleMap.size; // 0
+```
+
+## Clearing All Elements
+
+We can use the `clear` method to remove all the elements from a map.
+
+_For example_:
+
+```
+let memberMap = new Map(['x', 1], ['y', 2]);
+memberMap.size(); // 2
+
+memberMap.clear();
+memberMap.size(); // 0
+```
+
+## Verifying Membership
+
+We can check if variable, value is a member of a map by using `has` method. If it finds the elements key returns true, otherwise returns false. 
+
+_For example_:
+
+```
+let memberMap = (['Joe', 35], ['Jane', 30]);
+
+memberMap.has('Joe'); // true
+memberMap.has('John'); // false
+```
+
+## Iteration
+
+We can use the `for/of` loops or `forEach` methods same as arrays. We use `key, value` values when iteration through the `for/of` loop.
+
+_For example_:
+
+```
+let memberMap = (['Joe', 35], ['Jane', 30]);
+
+for (let [key, value] of memberMap) {
+	console.log(key + ' - ' + value);
+}
+
+memberMap.forEach((value, key) =>{
+	console.log(key + ' - ' + value);
+});
+```
+
+## Array Conversion
+
+We can convert our maps to arrays by using the spread operator `...` or `Array.from` method.
 
 ---
 [Go back to ToC](../README.md)

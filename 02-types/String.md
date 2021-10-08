@@ -214,7 +214,7 @@ noChange = message.substring();   // 'Hello World!', returns the original string
 /*
  * String.prototype.slice(startIndex) or String.prototype.slice(startIndex, {endIndex})
  * It will return any new string between the indexes very similar to substring. 
- * How ever the position of the endIndex must be greater than the startIndex inlike substrings.
+ * However the position of the endIndex must be greater than the startIndex inlike substrings.
  * If only a startIndex is provided it returns rest of the string. (indexes start from 0).
  * In addition it does accept negative numbers as indexes, which goes from right to left.
  * If no parameter is provided the method returns the original strings.
