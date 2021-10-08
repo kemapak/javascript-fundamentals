@@ -165,6 +165,17 @@ let collection = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 let evenOddCollection = Array.from(collection, (x) => {let numberType = (0 === x % 2) ? 'Even' : 'Odd'; return numberType;});
 ```
 
+## Multi Dimensional Arrays
+
+Array elements can be arrays. 
+
+_For example_:
+
+```
+let matrix = [[1, 2], [3, 4]];
+console.log(matrix[0][1]); // 2
+```
+
 ## Setting and Reading Array Elements
 We can easily assign values, and read the values from array elements.
 
@@ -226,7 +237,7 @@ let collectionThree = [];
 colloctionThree[99] = 'The 100th index is the only element';
 ```
 
-## Queues
+## Stack and Queues
 
 If we want to use an array as a queue, we can utilize the methods below. Lets assume we have array `let a = [1, 2, 3];`
 
@@ -255,6 +266,229 @@ We will talk about one more method which add, deletes and replaces array element
 
 ## Array Iteration
 
+### `for` Loop
+
+Since arrays indexed we can iterate them using `for` loops.
+
+_For example_:
+
+```
+for (let index = 0, collectionSize = collection.length; index < collectionSize; index++) {
+
+	// Skip undefined elements in sparse arrays.
+  if (undefined === collection[index]) {
+	  continue;
+  }
+  
+  console.log(collection[index]);
+}
+```
+
+> Note: For static sized arrays it is better to create a max length variable in the initialization section of the for loop. Otherwise, since JavaScript is dynamic, collection.length property will be evaluated for each loop.
+
+### `for/of` Loop
+We can also use `for/of` loops. These loop does not use index directly and iterate through the elements of an array show below.
+
+_For example_:
+
+```
+for (let element of collection) {
+
+	// Skip undefined elements in sparse arrays.
+  if (undefined === element) {
+	  continue;
+  }
+  
+	console.log(element);
+}
+```
+
+If we want to use indexes while using `for/of` loop, we can utilize `entries` method of array.
+
+_For example_:
+```
+for (let [index, element] of collection.entries()){
+
+	// Skip undefined elements in sparse arrays.
+  if (undefined === element) {
+	  continue;
+  }
+  
+	console.log(index, element);
+}
+```
+
+### `forEach` Array Method
+We can also use `forEach` method, which we can pass a function as a parameter (Usually an arrow function) that operates on each element of the array.
+
+_For example_:
+```
+collection.forEach(element => {
+	console.log(element);
+});
+```
+
+> Note: `forEach` method skips empty elements, so we do not need to handle it ourselves.
+
+> Note: The function we use as parameter `forEach` array method has one required parameter **element value** and can optionally accept two more parameters, **index** and **array** itself. 
+
+_For example_:
+
+```
+collection.forEach((elementValue, index, collection) => {
+	console.log(elementValue + '-' + collection[index]);
+});
+```
+
+Unless we pass the array and modify it inside our arrow function, `forEach` does not modify the array.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 4, 5];
+
+collection.forEach( x => x * x);
+
+console.log(collection); // [1, 2, 3, 4, 5]
+```
+
+### `map` Array Method
+
+`map` method is very similar to `forEach` but it returns a new array and does not modify the original array. Unless we assign the array to itself.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 4, 5];
+
+let resultCollection = collection.map( x => x * x);
+
+console.log(collection); // [1, 2, 3, 4, 5]
+console.log(resultCollection); // [1, 4, 9, 16, 25]
+
+collection = collection.map(x => x + 1); // [2, 3, 4, 5, 6]
+
+```
+
+> Note: Just like the `forEach` method, `map` method will skip undefined elements.
+
+### `filter` Array Method
+`filter` method returns a subset of the array elements. The function we pass as parameter has to return true or false evaluating each element.
+
+> Note: Just like the `forEach` and `map` method `filter` does not modify the original array and skips the undefined elements.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 4, 5];
+
+let resultCollection = collection.filter(x => x < 3);
+
+console.log(collection); // [1, 2, 3, 4, 5]
+console.log(resultCollection); // [1, 2]
+```
+
+A handy use of filters is to convert a sparse array to a dense array.
+
+_For example_:
+
+```
+let sparse = [1, ,2, , ,3];
+let dense = sparse.filter(() => true); // [1, 2, 3]
+```
+
+### `find` and `findIndex` Array Methods
+
+The `find` method, stops after the its function parameter find a matching element value. It will return the element value if true, otherwise it will return undefined.
+
+The `findIndex` method is very similar to the `find` method but it returns the index if there is match, otherwise it will return `-1` .
+
+Both methods only find the first occurrence and then stop.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 4, 5];
+let result;
+
+result = collection.find(x => x < 3); // 1
+result = collection.find(x => x > 5); // undefined
+
+result = collection.findIndex(x => x < 3); // 0
+result = collection.find(x => x > 5); // -1
+```
+
+### `every` and `some` Array Methods
+
+These methods return true or false depending the result of the function parameter they pass. `every` expects that every element passes the condition inside the function, and `some` expects some elements to pass the condition inside the function parameter.
+
+> Note: Similar to the previous methods `every` and `some` array methods skip undefined elements.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 4, 5];
+let result;
+
+result = collection.every(x => x < 3); // false
+result = collection.every(x => x < 6); // true
+
+result = collection.some(x => x < 3); // true
+result = collection.some(x => x > 5); // false
+```
+
+> Note: `every` method iteration stops when the first false result is found. `some` method iteration stops when the first true result is found.
+
+### `reduce` and `reduceRight` Array Methods
+
+As the name indicates these methods apply and logic to its elements and combine them. `reduce` method iterates from the start of the array (first element) and reduceRight` from the end of the array (last element). They both accept an optional initial value parameter that the reduction will start. The function parameter has to parameters to compare the array elements.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 4, 5];
+let result;
+
+// Returns the larget element in the collection.
+result = collection.reduce((x, y) => (x > y) ? x : y); // 5
+
+// With optional initial value parameter.
+result = collection.reduce((x, y) => (x > y) ? x : y, 100); // 100
+
+// Emtpy array.
+result = [].((x, y) => (x > y) ? x : y); // Type Error
+```
+
+### `flat` and `flatMap` Array Methods
+
+As the name indicates these method flatten multi dimensional arrays. The `flat` method has an optional parameter that indicated flattening level, the default is `1`.
+
+`flatMap` method is the combination of `flat` and `map` methods. `collection.map(functionParam).flat();`. It maps its elements first with the passed function parameter logic. After this it flattens the array.
+
+_For example_:
+```
+let collection = [[1, 2], [3, [4]]];
+let result;
+
+result = collection.flat(); // [1, 2, 3, [4]]
+result = collection.flat(2); // [1, 2, 3, 4]
+```
+
+## Adding Arrays with 'concat' Array Method and the `...` spread operator
+
+We can easily add to arrays via the spread operator or the concat method.
+
+_For example_:
+
+```
+let collection = [1, 2, 3, 4, 5];
+
+result = [...collection, 6, 7]; // [1, 2, 3, 4, 5, 6, 7]
+
+result = collection.concat(6, 7); // [1, 2, 3, 4, 5, 6, 7]
+```
+
+> Note: `concat` method is very expensive. Use spread operator or other methods to add an array.
 
 ---
 [Go back to ToC](../README.md)
