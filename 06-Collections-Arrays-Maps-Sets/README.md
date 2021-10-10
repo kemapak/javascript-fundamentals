@@ -463,6 +463,10 @@ let result;
 // Returns the larget element in the collection.
 result = collection.reduce((x, y) => (x > y) ? x : y); // 5
 
+// Returns the sum of the collection.
+result = collection.reduce((x, y) => x + y); // 15
+let mean = result / collection.length; // 3
+
 // With optional initial value parameter.
 result = collection.reduce((x, y) => (x > y) ? x : y, 100); // 100
 

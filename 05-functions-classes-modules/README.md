@@ -379,5 +379,75 @@ _For example_:
 Point.messageBunle.firstParameterNotANumber
 ```
 
+# Modules
+Having isolation and encapsulation between in our code is critical for building a system easy to maintain and scale. Modular programming help us to create software as the name indicates by groups specialized code; in other words with modules. This approach enables us to not only building our code brick by brick just like Legos, but also isolate issues if and when they happen.
+
+JavaScript did not have any modules for a long time, in Node layer we used a library called CommonJS which has a superb and extremely simple to create and use modules, in parallet with NPM (Node Package Manager) made middle tier JavaScript to be very popular and successful.
+
+We are not going to talk about old way of creating modules using "work arounds" in JavaScript. We are going to talk about how we are going to build and use modules with the latest features of JavaScript and Extremely elegant implementation in Node JS via Common JS for entire software packages.
+
+> Note: JavaScript Classes do provide encapsulation and modularization. As the name indicates for class level.
+
+> Note: JavaScript Objects are used for modularization as well, but with the since we have Classes this should be the preferred way of coding for most of the instances. We can use Objects are page level functionality, or when data will have its own methods. Keep in mind there is not encapsulation with objects.
+
+> Note: Inner functions. closures are also used to achieve encapsulation but these are not the right way to achieve this since we have classes and use private methods in classes.
+
+## Node Modules
+
+In Node and with the help of NPM/Package.json we get all the necessary programs and dependencies in our backend. This is very different in compare to the browser environment where we need to load all the files, dependencies via network. There is no benefit for bundling code in the Node layer to reduce number of requests through the network. In Node each file is an independent module. All the variables, constants, functions, classes defined in a file are private unless they explicitly made public (exported).
+
+We use `require()` function to access the public properties in a Node module.
+
+### Export
+Exporting single function of property we just need to add `exports`.
+
+_For example_: 
+
+```
+exports.mean = function(numericCollection) {
+
+	if (Nubmer.NaN(numericCollection.length)) {
+		throw new Error('Not a numeric collection');
+	}
+	
+	let mean = 0;
+	
+	if (0 === numericCollection.length) {
+	 return mean;
+	}
+	
+	let sum = numericCollection.reduce((x, y) => x + y);
+	
+	mean = sum / numericCollection.length;
+	
+	return mean;
+}
+``` 
+
+Usually we export a single class, object or function. We can do this by setting `module.exports` to the name of the identifier.
+
+_For example_:
+```
+module.exports = class MathUtil() {
+}
+```
+ 
+ We could easily assign `module.exports` to the `mean` function we created by the difference is you are explicitly setting the properties in this case `mean` function to be exported. The last example export an entire class (or object, function, or any other property).
+ 
+ I personally prefer to export an object or class instead of exporting functions individually.
+ 
+ _For example_:
+ 
+ ```
+ module.exports = {MathUtil};
+ 
+ or 
+ 
+ module.exports = {Chart};
+ ```
+
+### Import
+
+We can import other node modules by calling the `require()` function.
 ---
 [Go back to ToC](../README.md)
