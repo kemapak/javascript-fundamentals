@@ -410,7 +410,7 @@ exports.mean = function(numericCollection) {
 		throw new Error('Not a numeric collection');
 	}
 	
-	let mean = 0;
+	let result = 0;
 	
 	if (0 === numericCollection.length) {
 	 return mean;
@@ -418,9 +418,9 @@ exports.mean = function(numericCollection) {
 	
 	let sum = numericCollection.reduce((x, y) => x + y);
 	
-	mean = sum / numericCollection.length;
+	result = sum / numericCollection.length;
 	
-	return mean;
+	return result;
 }
 ``` 
 
@@ -434,20 +434,43 @@ module.exports = class MathUtil() {
  
  We could easily assign `module.exports` to the `mean` function we created by the difference is you are explicitly setting the properties in this case `mean` function to be exported. The last example export an entire class (or object, function, or any other property).
  
- I personally prefer to export an object or class instead of exporting functions individually.
+ I personally prefer to export an object or class instead of exporting functions individually. Also most of the time you might want to export multiple things.
  
  _For example_:
  
- ```
- module.exports = {MathUtil};
- 
- or 
- 
- module.exports = {Chart};
- ```
+``` 
+// Exporting single class with multiple functions, properties.
+module.exports = {MathUtil};
+
+// Exporting multiple functions, properties.
+module.exports = {LineChart, PieChart, AreaChart};
+```
 
 ### Import
 
-We can import other node modules by calling the `require()` function.
+We can import other node modules by calling the `require()` function. If you install the module via NPM (Node package manager) you just pass the name of the module. If you are importing a custom module you refer it to, by its location. Using relative paths would be better since you will deploy your code, and do not know the absolute path. If you want import some methods or properties of a module, you can specify them individually by using destructing assignment.
+
+_For example_:
+```
+// Build in Node module.
+const fs = require('fs');
+
+// NPM installed module.
+const server = require('express');
+
+// Custom module. We consume properties with namespace.
+const MathUtil = require('./utils/mathUtil.js');
+
+let value = MathUtil.fibonacci(4);
+
+// Importing only some of the methods and properties. 
+// We will consume these properties without a namespace.
+const {fibonacci, isWholeNumber, PI} = require('./utils/mathUtil.js');
+
+let value = fibonacci(4);
+```
+
+## JavaScript Native Modules
+
 ---
 [Go back to ToC](../README.md)
