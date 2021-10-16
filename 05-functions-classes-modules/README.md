@@ -547,7 +547,17 @@ The imported MathUtil is just like defining a constant. It will become a propert
 
 If we want to import multiple function, properties from a module we can use the syntax `import {functionOne, PropertyTwo} from './util.js'`. 
 
-If we want to import all the functions, properties from a module we use the syntax `import * as util from './util.js'`
+If we want to import all the functions, properties from a module we use the syntax `import * as util from './util.js'`. `util` will be used as a name space for all the functions and properties. _For example_: `util.loader()` if we have a function called `loader` defined in the util module.
+
+We can also import a module that does not export anything but executes some functionality internally. _For example_: telemetry functions. For these types of self contained modules we do not need to specify a name.
+
+_For example_:
+
+```
+import '../util/telemetry.js';
+```
+
+## Imports and Exports with Renaming
 
 
 ---
