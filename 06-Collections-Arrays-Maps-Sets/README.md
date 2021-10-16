@@ -505,7 +505,7 @@ result = collection.concat(6, 7); // [1, 2, 3, 4, 5, 6, 7]
 
 > Note: `concat` method is very expensive. Use spread operator or other methods to add an array.
 
-## Subarrays
+## Sub-arrays
 
 ### `slice` Array Method
 
@@ -605,7 +605,7 @@ result = collection.includes(5); // true
 
 ### `sort` Array Method
 
-As the name indicates this method sorts array elements. It does change the original array. By default it first converts and then sorts the elements alphabetically. 
+As the name indicates this method sorts array elements. It does change the original array. By default, it first converts and then sorts the elements alphabetically. 
 
 For elements that are objects we need to pass **comparator** method (check design patterns).
 - If the first element is larger then then second return 1
@@ -688,7 +688,7 @@ _For example_:
 
 ```
 let exampleSet = new Set();
-let memberSet = new Set({name: Joe}, {name: Jane});
+let memberSet = new Set([{name: 'Joe'}, {name: 'Jane'}]);
 ```
 
 ## `size`
@@ -700,7 +700,7 @@ _For example_:
 let exampleSet = new Set();
 exampleSet.size; // 0
 
-let memberSet = new Set({name: Joe}, {name: Jane});
+let memberSet = new Set([{name: 'Joe'}, {name: 'Jane'}]);
 memberSet.size(); // 2
 ```
 
@@ -715,7 +715,7 @@ We can use the `clear` method to remove all the elements from a set.
 _For example_:
 
 ```
-let memberSet = new Set({name: Joe}, {name: Jane});
+let memberSet = new Set([{name: Joe}, {name: Jane}]);
 memberSet.size(); // 2
 
 memberSet.clear();
@@ -729,7 +729,7 @@ We can check if variable, value is a member of a set by using `has` method. If i
 _For example_:
 
 ```
-let memberSet = new Set({name: Joe}, {name: Jane}, 2, 4);
+let memberSet = new Set([{name: 'Joe'}, {name: 'Jane'}, 2, 4]);
 
 memberSet.has(2); // true
 memberSet.has(5); // false

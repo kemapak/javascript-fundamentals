@@ -471,6 +471,84 @@ let value = fibonacci(4);
 ```
 
 ## JavaScript Native Modules
+In ES6 (ECMAScript 2015) finally JavaScript got modules, with exact same behavior as node. So all the classes, functions, constants, variables defined in a JS file unless it is explicitly exported are private.
+
+Same as node the modules that are imported in a JS module expose their public methods, classes, properties.
+
+The big difference is the syntax. Personally I wish ES6 adapted the exact way of importing and exporting modules just like in Node, but it did not.
+
+> Note: Modules change the scoping in JavaScript in two very important ways. First, all the variables, functions, classes defined inside a module are in module's scope can have `import` and `export` statements for dependency management and exporting public methods, functions, properties. Second, just like JavaScript Classes, JavaScript Modules the code inside them are automatically in **strict mode**.
+
+JavaScript in browsers have global scope or top level scope unless they were explicitly bound to a namespace.
+
+> Note: We can include JavaScript modules in our HTML pages by adding the `type="module"` in script tags.
+
+_For example_:
+
+```
+<script type="module" src="index.js"></script>
+```
+
+> Note: Node does support both Node Modules and Native JavaScript Modules. For now I recommend using the Node modules, until most of the packages change to handle the new syntax.
+
+### Export
+
+To export a function, method, or property in ES6 add `export` keyword before declare it. Alternatively (which I recommend) use `export {functionOne, propertyTwo, ClassThree}` and define your methods, functions and properties as usual.
+
+_For example_:
+```
+export const PI = 3.141526;
+
+function find(value) {
+}
+
+class MathUtil {
+}
+
+export {MathUtil, find};
+```
+
+Most of the time we do export only one class that has many methods and properties. In this case we use `export default` instead of just `export`. This is much more efficient if we have only one thing to export.
+
+_For example_:
+
+```
+Class Person {
+
+	#name;
+	#lastName;
+	#gender = new set(['male', 'female']);
+	#age
+	#ss
+	
+	constructor(...
+	
+}
+
+export default {Person}
+```
+
+> Note: `export` can only with top level objects.
+
+### Import
+Very similar to `export` in ES6 we can use `import [name] form 'location\file.js';` keyword to import other modules.
+
+_For example_:
+
+```
+import MathUtil from '../util/mathUtil.js;
+```
+
+The imported MathUtil is just like defining a constant. It will become a property of the hosting module.
+
+> Note: `import` like `export` can be use from the top level objects.
+
+> Note: ES6 requires fully qualified module names, so it can differentiate modules with same names. _For example_: `'util.js'` is not acceptable, but `'./util.js'` if the file is in the same directory or `'../common/util.js'` if it is somewhere else is OK.
+
+If we want to import multiple function, properties from a module we can use the syntax `import {functionOne, PropertyTwo} from './util.js'`. 
+
+If we want to import all the functions, properties from a module we use the syntax `import * as util from './util.js'`
+
 
 ---
 [Go back to ToC](../README.md)
