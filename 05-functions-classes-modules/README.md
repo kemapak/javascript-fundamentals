@@ -582,12 +582,30 @@ _For example_:
 ```
 
 // Combined Util Module.
-export { telemetry } from '..util/telemetry.js';
-export { mathUtil } from '..util/mathUtil.js';
+export { telemetry } from '../util/telemetry.js';
+export { mathUtil } from '../util/mathUtil.js';
 
 
 // Importing combined Util Module.
 import {telemetry, mathUtil } from '../util/combinedUtilities.js';
+```
+
+## Dynamic imports
+In node every imported module is ready when we run our program. In the browser however the modules have go through the internet. Therefore we can use `promises`, `async` and `await` to handle the asynchronous behavior of the web. 
+
+We use `import()` operator to dynamically import modules, it is very similar to a function invocation. The parameter can by dynamically generated as well unlike the static `import` directive.
+
+_For example_:
+
+```
+import('../util/mathUtil.js').then(mathUtil => {
+	result = mathUtil.fibonacci(value);
+});
+
+async fibonacci(value) {
+	let mathUtil = await import('../util/mathUtil.js');
+	return mathUtil.fibonacci(value);
+}
 ```
 
 ---
