@@ -608,5 +608,15 @@ async fibonacci(value) {
 }
 ```
 
+## Modules types
+Different tools, and different environments impact how we use `modules`. The table below summaries them at time this document is created.
+
+| Type              | Environment| Load Type |
+| :---              | :---       | :--- |
+| Script            | browsers   |	 async	 |
+| CommonJS module   | 	servers	   | sync	|
+| AMD module        |	browsers	   | async	 |
+| ECMAScript module |	browsers and servers | async |
+
 ---
 [Go back to ToC](../README.md)
