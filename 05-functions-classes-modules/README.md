@@ -4,7 +4,6 @@ Functions are the reusable blocks of code in JavaScript as well as many other la
 
 Since JavaScript is a prototype based language (More on prototypes) functions acted as both classes, methods and functions. This is a bit confusing but today JavaScript has native classes, and has very similar structure to current object-oriented languages.
 
-
 ## Defining Functions
 There are two ways we can define a function.
 
@@ -489,6 +488,14 @@ _For example_:
 <script type="module" src="index.js"></script>
 ```
 
+> Note: We can also include older JavaScript files that are not modules as modules within our JavaScript modules.
+
+_For example_:
+
+```
+import '../../node_modules/highcharts/highcharts.src.js';
+```
+
 > Note: Node does support both Node Modules and Native JavaScript Modules. For now I recommend using the Node modules, until most of the packages change to handle the new syntax.
 
 ### Export
@@ -558,7 +565,30 @@ import '../util/telemetry.js';
 ```
 
 ## Imports and Exports with Renaming
+We can rename the names of the modules you are importing. Either because we want to use different names or because of the modules you are importing have the same name. We can use the `as` keyword for rename the imports.
 
+_For example_:
+
+```
+import { MathUtil as Math } from '../util/mathUtil.js';
+import { Telemetry as Analytics } from '../util/telemetry.js';
+```  
+
+## Aggregator modules, re-exports
+If we want to create a utility module that includes several utility modules we can do that easily too. Instead of first importing and then exporting we can do it one line.
+
+_For example_:
+
+```
+
+// Combined Util Module.
+export { telemetry } from '..util/telemetry.js';
+export { mathUtil } from '..util/mathUtil.js';
+
+
+// Importing combined Util Module.
+import {telemetry, mathUtil } from '../util/combinedUtilities.js';
+```
 
 ---
 [Go back to ToC](../README.md)
