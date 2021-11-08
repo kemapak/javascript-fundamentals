@@ -84,6 +84,141 @@ In examples in how to create objects demonstrates this. Both **car** and **empty
 
 When we create an object instance (class, function, array, date, map, set, symbol) with the `new` operator; the `constructor` method sets the value of the prototype property of our object.
 
+## Getting and setting object properties.
+We can use the dot `.` notation or square brackets `[]`, associate arrays to get and set object methods if they are accessible and writable. If we have any private properties inside an class for example we cannot access it directly.
+
+Keep in mind associative arrays become very handy when we can to construct these names via expression or iterating through properties.
+
+_For example_:
+
+```
+let carBrand = car.brand;
+car.brand = 'Mini';
+
+for (let chapter in book) {
+ console.log(book.[chapter][title]);
+}
+```
+
+## Inheritance
+In JavaScript when a class, object or function inherits from another class, object or function actually it inherits the properties (fields and methods) to the parent objects prototype object. 
+
+As we mentioned above the prototype chains or links will go through the root to the leaf object. In other words, some of the object properties belong to the current object and some could belong to the parent, grand parent, or grand-grand parent and so on.
+
+Again, I do strongly recommend that you use classes instead of object or functions that mimics classes.
+
+To give an example for the objects to explain the inheritance with is very similar to function and class inheritance.
+
+_For example_:
+
+```
+let grandParent = {
+	lastName: 'Doe',
+	name: 'Jason'
+}
+
+// Inherits grandParent prototype object properties.
+let parent = Object.create(grandParent);
+// Overides the name.
+parent.name = 'Joe';
+// Has hairColor property just belongs to parent.
+parent.hairColor = 'Black';
+
+console.log(parent.lastName); // `Doe`, Inherits from grandParent.
+console.log(parent.name); // 'Joe' console.log(parent.hairColor); // 'Black' Inherist from parent.
+
+
+// Inherits parent prototype object properties.
+let child = Object.create(parent);
+// Overides the name.
+child.name = 'John';
+// Has shoeSize property just belongs to child.
+child.shoeSize = 7;
+
+console.log(child.lastName); // `Doe`, Inherits from grandParent.
+console.log(child.name); // 'John' console.log(child.hairColor); // 'Black' Inherist from parent.
+console.log(child.shoeSize); // 7
+```
+
+## Error Case for non existent properties
+
+If we query a non existent property of on a defined/existent object we get undefined.
+
+_For example_:
+
+```
+let person = {
+	name: 'John',
+	lastName: 'Doe'
+}
+let profession = person.profession; // Returns undefined.
+
+let yearOfExperience = person.profession.yearsOfExperiance; // TypeError, undefined or null does not have any properties.
+```
+
+We can use several techniques to check if the properties exist and avoid `TypeError`.
+
+_For example_:
+
+```
+let person = {
+	name: 'John',
+	lastName: 'Doe'
+}
+
+// We can use short circuiting behavior to check if the property exists.
+let yearsOfExperience; // Undefined since it is not initialized.
+
+// Check if the property exists.
+if (person && person.profession && person.profession.yearsOfExperience) {
+	yearsOfExperince = person.profession.yearsOfExperience;
+}
+
+// Or we can use conditional operator to check if the property exists.
+
+// If the properties of the person object does not exist, it will return 'undefined'.
+let yearsOfExperience = person?.profession?.yearsOfExperience;
+```
+
+> Note: If the property of an object is read-only trying to set fails. In strict mode, these errors are verbose, otherwise they are silent.
+
+## Deleting properties from an object
+
+The `delete` operator removes property from an object.
+
+> Note: `delete` operator cannot remove the inherited properties, but returns `true`.
+
+> Note: `delete` operator throws `ReferenceError` if the property does not exists.
+
+_For example_:
+
+```
+let person = {
+	lastName: 'Doe'
+}
+
+let human = Object.create(person);
+human.name = 'John';
+
+console.log(human.lastName); // returns 'Doe'.
+console.log(human.name); // returns 'John'.
+
+delete human.name;
+delete human.lastName;
+console.log(human.lastName); // returns 'Doe'.
+console.log(human.name); // returns 'undefined'
+
+delete human.profession; // throws 'ReferenceError'
+```
+
+> Note: `delete` operator throws an `TypeError` in strict mode, otherwise returns `false` if it tries to delete a non-configurable property.
+
+_For example_:
+
+```
+delete Object.prototype; // Throws 'TypeError` in strict mode, otherwise returns 'false` 
+```
+
 
 ---
 [Go back to ToC](../README.md)
