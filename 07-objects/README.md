@@ -219,6 +219,52 @@ _For example_:
 delete Object.prototype; // Throws 'TypeError` in strict mode, otherwise returns 'false` 
 ```
 
+## Checking object properties
+
+### Checking if property exits with `in` operator, hasOwnProperty() method and querying property.
+
+We can check if a property belongs to an object by using `in` property or `hasOwnProperty()` method. The `hasOwnProperty()` method checks only the current objects properties not the inherited ones. 
+
+We can also query the existence of the property, this approach is very much like `hasOwnProperty()` method and only checks the current objects properties not the inherited ones.
+
+_For example_:
+
+```
+let person = {
+	name: 'John',
+	lastName: 'Doe'
+}
+
+console.log('name' in person); // true
+console.log('weight' in person); // false
+console.log('toString' in person); // true, inherited from 'Object'.
+
+console.log(person.hasOwnProperty('name')); // true
+console.log(person.hasOwnProperty('weight')); // false
+console.log(person.hasOwnProperty('toString')); // false, inheried from 'Object'.
+
+console.log(person.name !== undefined)); // true;
+console.log(person.toString !== undefined)); // false, inherited from 'Object'.
+```
+
+### Checking if a property is enumerable with `propertyIsEnumerable()` method
+
+We can check if a property of an object is enumerable. Please keep in mind that like `hasOwnProperty()` method `propertyIsEnumerable()` method only check the properties of the current object properties not the inherited ones.
+
+_For example_:
+
+```
+let person = {
+	name: 'John',
+	lastName: 'Doe'
+}
+
+console.log(person.propertyIsEnumerable('name')); // true
+console.log(person.propertyIsEnumerable('toString')); // false, inherited from 'Object'.
+```
+
+### Enumerating properties 
+
 
 ---
 [Go back to ToC](../README.md)
