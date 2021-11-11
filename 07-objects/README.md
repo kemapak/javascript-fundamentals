@@ -265,6 +265,84 @@ console.log(person.propertyIsEnumerable('toString')); // false, inherited from '
 
 ### Enumerating properties 
 
+We can loop through an objects properties via `for/in` loop, keep in mind the `in` operator shows the inherited properties as long as they enumerable.
+
+_For example_:
+
+```
+let parent = {
+	name: 'John',
+	lastName: 'Doe'
+}
+
+let child = Object.create(parent);
+child.name = 'Joe';
+child.hairColor = 'Black';
+
+for (let prop in child) {
+
+	// Skip the inheritted properties.
+	if (!child.hasOwnProperty(prop)) {
+		continue;
+	}
+	
+	// Skip methods.
+	if ('function' === typeof child[prop]) {
+		continue;
+	}
+	
+	console.log(prop); // name, hairColor
+}
+```
+
+We can also use `for/of` loops to enumerate object properties. 
+
+To do this we will use `Object.keys()` method which return the current objects keys if they are not inherited, not enumerable, and not a Symbol.
+
+We will use `Object.getOwnPropertyNames()` method which also return names of non-enumerable own properties. This will also not return names that are Symbols.
+
+To get the properties whose names are Symbol we will use `Object.getOwnPropertySymbols()` method.
+
+Finally to get all the properties, enumerable, non-enumerable, String and Symbols we will use `Reflect.ownKeys()` method.
+
+_For example_:
+
+```
+let parent = {
+	name: 'John',
+	lastName: 'Doe',
+	[Symbol('ssNumber')]: '111-222-3333'
+}
+
+let child = Object.create(parent);
+child.name = 'Joe';
+child.hairColor = 'Black';
+child[Symbol('ssNumber')] = '444-555-6666';
+
+for (let key of Object.keys(parent)) {
+	console.log(key); // name, lastName
+}
+
+for (let key of Object.keys(child)) {
+	console.log(key); // name, hairColor
+}
+
+for (let key of Object.getOwnPropertyNames(parent)) {
+	console.log(key); // name, lastName
+}
+
+for (let key of Object.getOwnPropertyNames(child)) {
+	console.log(key); // name, hairColor
+}
+
+for (let key of Object.getOwnPropertySymbols(parent)){
+	console.log(key); // Symbol(ssNumber)
+}
+
+for (let key of Reflect.ownKeys(child)){
+	console.log(key, ': ', child[key]); // name: Joe, hairColor: Black, Symbol(ssNumber): 444-555-6666
+}
+```
 
 ---
 [Go back to ToC](../README.md)
