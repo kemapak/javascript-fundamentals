@@ -219,7 +219,7 @@ _For example_:
 delete Object.prototype; // Throws 'TypeError` in strict mode, otherwise returns 'false` 
 ```
 
-## Checking object properties
+## Checking object's properties
 
 ### Checking if property exits with `in` operator, hasOwnProperty() method and querying property.
 
@@ -344,9 +344,46 @@ for (let key of Reflect.ownKeys(child)){
 }
 ```
 
-## Object Methods
+## Core Object methods that needs to be overridden and implemented.
+Some of the core methods an object inherits from `Object.prototype` is not very useful and needs to be implemented by the newly defined object. This is very similar to implementing interfaces in other languages. 
 
-### `toString()`
+> Note: This is also valid and needed for JavaScript Classes.
+
+### `toString()` method
+This method represents the object in string form. Out of the box it is not very useful. For any object that does not override this method it returns `[object Object]`. If we want to create a more meaningful method we need to override `toString()` of the `Object.prototype`.
+
+_For example_:
+
+```
+let person = {
+	name: 'John',
+	lastName: 'Doe'
+}
+
+console.log(person.toString()); // [object Object]
+
+let car = {
+	brand: 'mini',
+	type: 'convertable',
+	toString: function() {
+	  return 'brand: ' + this.brand + ', type: ' + this.type;
+	}
+}
+
+console.log(car.toString()); // brand: mini, type: convertable.
+```
+
+### `toLocaleString()` method
+
+This method is very similar to `toString()` method. It call `toString()` method internally except for Date and Number type objects. Those object types converts the output to the localized format.
+
+### `valueOf()` method
+
+This method is very similar to `toString()` method as well. It converts the output to a primitive value besides string type. Usually used for Number. Also a date object converts it date to a number.
+
+### `toJSON()` method
+
+This method defines actually `JSON.stringify()` method that is used to serialize the object. The return value is serialized instead the original object. I do not find much use for this method, but it is part of our developer toolbox if needed.
 
 ## JSON & Data Serialization
 
@@ -400,6 +437,7 @@ JSON has very similar a subset of JavaScript data types.
 > Note: If we need to use dates, we can by converting them to ISO-formatted strings using `date.toJSON()` method or we convert the dates to milliseconds in UTC time as use them as Strings. I do recommend the second approach since it will be only numbers. We can use `date.get()` method to get the UTC time in milliseconds for the date.
 
 We will use JSON almost all the time when we are communicating with the APIs in UI or Backend or when we are building services in the Node layer.
+
 
 ---
 [Go back to ToC](../README.md)
