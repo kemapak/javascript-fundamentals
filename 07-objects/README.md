@@ -344,5 +344,62 @@ for (let key of Reflect.ownKeys(child)){
 }
 ```
 
+## Object Methods
+
+### `toString()`
+
+## JSON & Data Serialization
+
+Object serialization is the converting an Object to a String to transport via our API which can be converted back again to an Object to be consumed in the UI or the backend. 
+
+We use two methods to convert an Object to a String `JSON.stringify()` and String to an Object `JSON.parse()`.
+
+_For example_:
+
+```
+let person = {
+	name: "John",
+	lastName: "Doe",
+	addresses: [
+		{
+			type: "home",
+			street: "123 Main Street",
+			city: "San Francisco",
+			zipcode: "12345"
+		},
+		{
+			type: "work",
+			street: "456 Work Street",
+			city: "San Francisco",
+			zipcode: "54321"
+		}
+	],
+	secretId: null
+}
+
+// Convert to string.
+let payload = JSON.stringify(person);
+
+// Restore JavaScript object.
+let data = JSON.parse(payload);
+```
+
+JSON stands for JavaScript Object Notation. It is invented by Douglas Crockford in early 2000s, and since then it became the de facto standard for data payload format both in UI, Backend and services.
+
+### JSON Data Types
+
+JSON has very similar a subset of JavaScript data types.
+
+- Number
+- String
+- Boolean
+- Array
+- Object
+- Null
+
+> Note: If we need to use dates, we can by converting them to ISO-formatted strings using `date.toJSON()` method or we convert the dates to milliseconds in UTC time as use them as Strings. I do recommend the second approach since it will be only numbers. We can use `date.get()` method to get the UTC time in milliseconds for the date.
+
+We will use JSON almost all the time when we are communicating with the APIs in UI or Backend or when we are building services in the Node layer.
+
 ---
 [Go back to ToC](../README.md)
