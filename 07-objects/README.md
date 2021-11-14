@@ -438,6 +438,99 @@ JSON has very similar a subset of JavaScript data types.
 
 We will use JSON almost all the time when we are communicating with the APIs in UI or Backend or when we are building services in the Node layer.
 
+## Extended object syntax
+
+These methods are rarely used can be useful in edge cases.
+
+### Adding external variable, properties, symbols to objects
+
+If we have any variables defined we can easily add them to our objects.
+
+_For example_:
+
+```
+let name = 'John';
+let lastName = 'Doe';
+
+// Regular syntax
+let person = {
+	name: name,
+	lastName: lastName
+}
+
+// Shorthand syntax
+let person = {
+	name,
+	lastName
+}
+```
+
+We can also add dynamically created properties to our objects.
+
+_For example_:
+
+```
+const TITLE = 'Title';
+let book = {};
+
+// Regular syntax
+book[TITLE] = 'JavaScript Fundamentals';
+
+// Shorthand syntax
+book {
+ [TITLE]: 'JavaScript Fundamentals'
+}
+```
+
+Also as we before we can add Symbols to our objects.
+
+_For example_:
+
+```
+let extension = Symbol('extension');
+let spec = {
+	sytleColor: '#3355577'
+};
+
+// Regular syntax.
+spec[extension] = {customStyleColor: '#EEE357`};
+
+// Shorthand syntax.
+spec = {
+	sytleColor: '#3355577',
+	[Symbol('extension')]: {
+		customStyleColor: '#EEE357`
+	}
+};
+```
+
+## Spread operator, creating objects by copying objects
+
+We can easily copy object or create aggregate objects from other objects by copying them with spread operator.
+
+_For example_:
+
+```
+let identity = {
+	name: 'John',
+	lastName: 'Doe'
+}
+
+let address = {
+	street: '123 Main Street',
+	city: 'San Francisco',
+	zipCode: '12345'
+}
+
+let person{ ...identity, ...address};
+```
+
+> Note: If the objects have any property with the same name, the last, right most property value overrides the previous ones.
+
+> Note: Spread operator only copies the properties of the actual object, the objects inherited properties. In other words this is a shallow copy.
+
+> Note: Spread operator in objects are not efficient, use with sparsely and with caution.
+
 
 ---
 [Go back to ToC](../README.md)
