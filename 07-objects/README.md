@@ -531,6 +531,52 @@ let person{ ...identity, ...address};
 
 > Note: Spread operator in objects are not efficient, use with sparsely and with caution.
 
+## Shortcut Property Definitions
+
+In ES6 and further we can define methods in an object as well as a class with shortcut properties.
+
+_For example_:
+
+```
+// Long form.
+let Person = {
+	name: 'John',
+	lastName: 'Doe',
+	dateOfBirth: '1/1/2000',
+	calculateAge: function() {
+		return (new Date()).getFullYear() - (new Date(this.dateOfBirth)).getFullYear();
+	}
+}
+
+// Short form.
+let Person = {
+	name: 'John',
+	lastName: 'Doe',
+	dateOfBirth: '1/1/1960',
+	getAge() {
+		return (new Date()).getFullYear() - (new Date(this.dateOfBirth)).getFullYear();
+	}
+}
+```
+
+We can also use property names in brackets (Like Symbols) or as Strings.
+
+_For example_:
+
+```
+let methodName = 'getAge';
+let ssNumber = Symbol('ssNumber');
+let Person: {
+	name: 'John',
+	lastName: 'Doe',
+	'dateOfBirth': '1/1/1960',
+	[methodName]() {
+		return (new Date()).getFullYear() - (new Date(this.dateOfBirth)).getFullYear();
+	},
+	[ssNumber]: '333-555-7777'
+}
+```
+
 
 ---
 [Go back to ToC](../README.md)
