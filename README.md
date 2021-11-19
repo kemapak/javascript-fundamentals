@@ -1,4 +1,4 @@
-# javascript-fundamentals
+# javascript-fundamentals (Under Development/Draft)
 
 This repository contains training classes for JavaScript fundamentals (ES2020).
 
