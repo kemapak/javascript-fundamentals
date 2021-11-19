@@ -23,7 +23,11 @@ We will be using:
    3. [Symbol](02-types/Symbol.md)
 3. [Operators](03-operators/README.md)
 4. [Conditionals and Loops](04-conditionals-loops/README.md)
-6. [Functions, Classes and Modules](05-functions-classes-modules/README.md)
-7. [Collections - Arrays, Maps, Sets](06-collections-arrays-maps-sets/README.md)
-8. [Objects](07-objects/README.md)
-9. Regular Expressions and String Manipulation
+5. [Functions, Classes and Modules](05-functions-classes-modules/README.md)
+6. [Collections - Arrays, Maps, Sets](06-collections-arrays-maps-sets/README.md)
+7. [Objects](07-objects/README.md)
+8. Regular Expressions and String Manipulation
+9. Getting Data
+10. Promises, Async and Await
+11. Node Basics
+12. Express Basics
