@@ -577,6 +577,39 @@ let Person: {
 }
 ```
 
+## Accessor properties (getters and setters)
+
+We can use accessors in objects. Again I do highly recommend that to consider JavaScript classes instead of objects. We have private properties in classes and accessors will be more useful.
+
+Accessors are inherited and we can do some data manipulation or check some conditions.
+
+_For example_:
+
+```
+let Person = {
+	name: 'Default',
+	get name() {
+		return this.name;
+	},
+	set name(value) {
+		this.name = value;
+	}
+	lastName: 'Default',
+	get lastName() {
+		return this.lastName;
+	},
+	set lastName(value) {
+		this.lastName = value;
+	}
+}
+
+console.log(Person.name, ' ', Person.lastName); // Default Default;
+
+Person.name = 'John',
+Person.lastName = 'Doe';
+	
+console.log(Person.name, ' ', Person.lastName); // John Doe;	
+```
 
 ---
 [Go back to ToC](../README.md)
